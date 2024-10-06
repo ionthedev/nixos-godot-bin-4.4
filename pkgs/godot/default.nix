@@ -22,8 +22,8 @@ stdenv.mkDerivation rec {
   version = "3.5.1";
 
   src = fetchurl {
-    url = "https://downloads.tuxfamily.org/godotengine/${version}/Godot_v${version}-${qualifier}_x11.64.zip";
-    sha256 = "kl5HGjL2mjxWktfubJXan/l7bmZu562VmD8iO6rQ4H0=";
+    url = "https://github.com/godotengine/godot-builds/releases/download/${version}/Godot_v${version}_linux_x86_64.zip";
+    sha256 = "ELOdePMqqrkejdkld8/7bxMFqBQ+PIZhAF4aGQPjO90=";
   };
 
   nativeBuildInputs = [autoPatchelfHook makeWrapper unzip];
@@ -46,7 +46,7 @@ stdenv.mkDerivation rec {
   unpackCmd = "unzip $curSrc -d source";
   installPhase = ''
     mkdir -p $out/bin
-    install -m 0755 Godot_v${version}-${qualifier}_x11.64 $out/bin/godot
+    install -m 0755 Godot_v${version}-${qualifier}_linux_x86_64 $out/bin/godot
 
     # Only create a desktop file, if the necessary variables are set
     # these are set only, if one installs this program using flakes.
